@@ -25,6 +25,39 @@
     --red: #f87171;
     --yellow: #fde047;
   }
+html,
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background:#04060d !important;
+}
+
+/* PREVENT WHITE REPAINT */
+
+body{
+    will-change:transform;
+    backface-visibility:hidden;
+    transform:translateZ(0);
+}
+
+/* FADE-IN */
+
+.app{
+    animation:fadeIn 0.35s ease-out;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(1.01);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
 body:before{
     content:'';
     position:fixed;
