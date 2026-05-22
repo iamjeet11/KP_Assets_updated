@@ -28,8 +28,11 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
-    width: 3800px;
-    height: 1980px;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    width:100%;
+    height:100%;
 }
   body {
     background: var(--bg-0);
@@ -61,12 +64,12 @@ html, body {
 .app {
     position: relative;
     z-index: 1;
-    width: 3800px;
-    height: 1980px;
+    width:100vw;
+    height:100vh;
     overflow: hidden;
     display: grid;
     grid-template-rows: 1fr;
-    padding: 10px 14px;
+    padding: 40px 52px;
     gap: 0;
   }
 
@@ -117,10 +120,10 @@ font-weight: 700; font-size: 20px; font-weight: 700; color: var(--cyan); letter-
   .header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
   .live-pill {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 4px 12px;
+    padding: 10px 20px;
     border: 1px solid var(--red); color: var(--red);
     font-family: 'Segoe UI', sans-serif;
-font-weight: 700; font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+font-weight: 700; font-size: 20px; font-weight: 700; letter-spacing: 0.18em;
     box-shadow: 0 0 16px rgba(248, 113, 113, 0.30);
   }
   .live-pill::before {
@@ -129,7 +132,7 @@ font-weight: 700; font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
     animation: pulse 1.4s ease-in-out infinite;
   }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .clock { font-family: 'Segoe UI', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+  .clock { font-family: 'Segoe UI', sans-serif; font-size: 24px; color: var(--muted); letter-spacing: 0.08em; }
   .clock b { color: var(--text); }
 
   /* ===================== STAGE ===================== */
@@ -162,9 +165,9 @@ font-weight: 700; font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
     text-align: center; pointer-events: none; z-index: 5;
   }
   .stage-title .eyebrow { font-family: 'Segoe UI', sans-serif;
-font-weight: 700; font-size: 9px; font-weight: 600; color: var(--cyan); letter-spacing: 0.40em; opacity: 0.7; }
+font-weight: 700; font-size: 22px; font-weight: 600; color: var(--cyan); letter-spacing: 0.40em; opacity: 0.7; }
   .stage-title .title { font-family: 'Segoe UI', sans-serif;
-font-weight: 700; font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: 0.12em; margin-top: 3px; text-shadow: 0 0 24px rgba(94, 234, 212, 0.30); transition: color 0.5s; }
+font-weight: 700; font-size: 54px; font-weight: 800; color: var(--text); letter-spacing: 0.12em; margin-top: 3px; text-shadow: 0 0 24px rgba(94, 234, 212, 0.30); transition: color 0.5s; }
 
   .scene-wrap { position: absolute; inset: 0; }
   .scene { width: 100%; height: 100%; display: block; }
@@ -172,13 +175,14 @@ font-weight: 700; font-size: 22px; font-weight: 800; color: var(--text); letter-
   /* Detail panel */
   .detail-panel {
     position: absolute;
-    top: 64px; right: 18px;
-    width: 300px;
+    top: 120px;
+    right: 40px;
+    width: 680px;
     background: var(--panel);
     backdrop-filter: blur(14px);
     border: 1px solid var(--panel-stroke);
-    border-left: 3px solid var(--cyan);
-    padding: 14px 16px 16px;
+    border-left: 6px solid var(--cyan);
+    padding: 32px 36px 38px;
     z-index: 8;
     transition: border-left-color 0.5s ease, transform 0.45s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.35s ease;
     transform-origin: top right;
@@ -197,8 +201,8 @@ font-weight: 700; font-size: 22px; font-weight: 800; color: var(--text); letter-
 
   .panel-close {
     position: absolute;
-    top: 8px; right: 8px;
-    width: 22px; height: 22px;
+    top: 18px; right: 18px;
+    width: 44px; height: 44px;
     display: grid; place-items: center;
     border: 1px solid rgba(94, 234, 212, 0.30);
     background: rgba(94, 234, 212, 0.06);
@@ -212,7 +216,7 @@ font-weight: 700; font-size: 22px; font-weight: 800; color: var(--text); letter-
     border-color: var(--red);
     color: var(--red);
   }
-  .panel-close svg { width: 12px; height: 12px; }
+  .panel-close svg { width: 22px; height: 22px; }
 
   /* Floating reopen tab that appears when panel is collapsed */
   .panel-reopen {
@@ -248,20 +252,20 @@ font-weight: 700;
   .panel-reopen svg { width: 12px; height: 12px; }
   @keyframes tabSlideIn { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-  .detail-chapter { font-family: 'Segoe UI', sans-serif; font-size: 9px; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 4px; }
+  .detail-chapter { font-family: 'Segoe UI', sans-serif; font-size: 20px; color: var(--muted); letter-spacing: 0.18em; margin-bottom: 10px; }
   .detail-chapter b { color: var(--cyan); }
   .detail-title { font-family: 'Segoe UI', sans-serif;
-font-weight: 700; font-size: 16px; font-weight: 700; color: var(--text); letter-spacing: 0.06em; margin-bottom: 2px; }
-  .detail-tag { font-family: 'Segoe UI', sans-serif; font-size: 10px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+font-weight: 700; font-size: 42px; font-weight: 700; color: var(--text); letter-spacing: 0.06em; margin-bottom: 8px; }
+  .detail-tag { font-family: 'Segoe UI', sans-serif; font-size: 22px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 42px; }
 
-  .detail-metrics { display: grid; gap: 7px; }
+  .detail-metrics { display: grid; gap: 22px; }
   .metric {
     display: grid; grid-template-columns: 30px 1fr auto;
     align-items: center; gap: 10px;
-    padding: 6px 9px;
+    padding: 18px 22px;
     background: rgba(94, 234, 212, 0.04);
     border: 1px solid rgba(94, 234, 212, 0.10);
-    border-left: 2px solid var(--cyan);
+    border-left: 4px solid var(--cyan);
   }
   .metric.orange { border-left-color: var(--orange); }
   .metric.cyan { border-left-color: var(--cyan); }
@@ -269,12 +273,12 @@ font-weight: 700; font-size: 16px; font-weight: 700; color: var(--text); letter-
   .metric.green { border-left-color: var(--green); }
   .metric.yellow { border-left-color: var(--yellow); }
   .metric.pink { border-left-color: var(--pink); }
-  .metric-icon { width: 30px; height: 30px; display: grid; place-items: center; opacity: 0.9; }
-  .metric-icon svg { width: 24px; height: 24px; }
+  .metric-icon { width: 64px; height: 64px; display: grid; place-items: center; opacity: 0.9; }
+  .metric-icon svg { width: 48px; height: 48px; }
   .metric-info { display: flex; flex-direction: column; }
-  .metric-label { font-family: 'Segoe UI', sans-serif; font-size: 9px; font-weight: 500; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+  .metric-label { font-family: 'Segoe UI', sans-serif; font-size: 18x; font-weight: 500; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
   .metric-value { font-family: 'Segoe UI', sans-serif;
-font-weight: 700; font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.1; }
+font-weight: 700; font-size: 34px; font-weight: 700; color: var(--text); line-height: 1.1; }
   .metric.orange .metric-value { color: var(--orange-soft); }
   .metric.cyan .metric-value { color: var(--cyan); }
   .metric.purple .metric-value { color: var(--purple); }
@@ -284,9 +288,9 @@ font-weight: 700; font-size: 15px; font-weight: 700; color: var(--text); line-he
   .metric-suffix { font-family: 'Segoe UI', sans-serif; font-size: 8px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
 
   .detail-desc {
-    margin-top: 12px; padding-top: 10px;
-    border-top: 1px dashed rgba(94, 234, 212, 0.15);
-    font-family: 'Segoe UI', sans-serif; font-size: 12px;
+    margin-top: 24px; padding-top: 20px;
+    border-top: 1.8px dashed rgba(94, 234, 212, 0.15);
+    font-family: 'Segoe UI', sans-serif; font-size: 24px;
     color: var(--muted); line-height: 1.45;
   }
 
@@ -295,13 +299,14 @@ font-weight: 700; font-size: 15px; font-weight: 700; color: var(--text); line-he
     position: absolute;
     bottom: 14px; left: 18px;
     display: flex; gap: 12px;
-    padding: 8px 12px;
+    padding: 18px 24px;
     background: var(--panel);
     backdrop-filter: blur(10px);
     border: 1px solid var(--panel-stroke);
     z-index: 7;
     font-family: 'Segoe UI', sans-serif;
-    font-size: 10px;
+    font-size: 22px;
+    gap: 28px;
     letter-spacing: 0.10em;
     text-transform: uppercase;
     color: var(--muted);
@@ -354,7 +359,7 @@ font-weight: 700; font-size: 15px; font-weight: 700; color: var(--text); line-he
   .chapter-btn:hover { color: var(--text); }
   .chapter-btn.active { color: var(--text); }
   .chapter-num { font-family: 'Segoe UI', sans-serif; font-size: 8px; letter-spacing: 0.18em; opacity: 0.7; }
-  .chapter-name { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .chapter-name { font-size: 24px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
   .chapter-bar { height: 3px; background: rgba(94, 234, 212, 0.10); position: relative; overflow: hidden; }
   .time-display { font-family: 'Segoe UI', sans-serif; font-size: 10px; color: var(--muted); letter-spacing: 0.08em; min-width: 80px; text-align: right; }
   .time-display b { color: var(--text); }
@@ -405,9 +410,9 @@ font-weight: 700; font-weight: 800; pointer-events: none; }
     background: rgba(4, 6, 13, 0.92);
     backdrop-filter: blur(8px);
     border: 1px solid var(--panel-stroke);
-    padding: 4px 9px;
+    padding: 10px 18px;
     font-family: 'Segoe UI', sans-serif;
-    font-size: 10px; letter-spacing: 0.10em; text-transform: uppercase;
+    font-size: 24px; letter-spacing: 0.10em; text-transform: uppercase;
     color: var(--text); pointer-events: none; z-index: 6;
     white-space: nowrap;
     transition: opacity 0.3s, transform 0.3s, border-color 0.3s;
