@@ -25,37 +25,23 @@
     --red: #f87171;
     --yellow: #fde047;
   }
-html,
-body{
-    margin:0;
-    padding:0;
-    overflow:hidden;
-    background:#04060d !important;
+body:before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:#04060d;
+    z-index:9999;
+    pointer-events:none;
+    animation:overlayFade .45s ease forwards;
 }
 
-/* PREVENT WHITE REPAINT */
-
-body{
-    will-change:transform;
-    backface-visibility:hidden;
-    transform:translateZ(0);
-}
-
-/* FADE-IN */
-
-.app{
-    animation:fadeIn 0.35s ease-out;
-}
-
-@keyframes fadeIn{
+@keyframes overlayFade{
     from{
-        opacity:0;
-        transform:scale(1.01);
+        opacity:1;
     }
 
     to{
-        opacity:1;
-        transform:scale(1);
+        opacity:0;
     }
 }
   * { box-sizing: border-box; margin: 0; padding: 0; }
